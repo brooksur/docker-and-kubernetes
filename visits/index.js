@@ -1,5 +1,6 @@
 const express = require('express')
 const redis = require('redis')
+const process = require('process')
 
 const client = redis.createClient({
   host: 'redis-server', // name of the service in docker-compose.yml
@@ -9,6 +10,7 @@ const client = redis.createClient({
 const app = express()
 
 app.get('/', (req, res) => {
+  process.exit(1)
   client.get('visits', (err, visits) => {
     if (!visits) visits = 1
     else {

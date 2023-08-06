@@ -3,6 +3,8 @@ services:
   redis-server:
     image: 'redis'
   node-app:
+    restart: always # always restart the container if it stops
     build: . # use the Dockerfile in the current directory
     ports:
       - '4001:8081' # map port 4001 on the host to port 8081 in the container
+
